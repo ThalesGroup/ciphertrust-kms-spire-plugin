@@ -1,8 +1,8 @@
 /*
  *  Copyright (c) 2024 Thales Group Limited. All Rights Reserved.
  *  This software is the confidential and proprietary information of Thales Group.
- *  
- *  Thales Group MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF 
+ *
+ *  Thales Group MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF
  *  THE SOFTWARE, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
  *  TO THE IMPLIED WARRANTIES OR MERCHANTABILITY, FITNESS FOR A
  *  PARTICULAR PURPOSE, OR NON-INFRINGEMENT. Thales Group SHALL NOT BE
@@ -31,7 +31,6 @@ import (
 	"strconv"
 	"sync"
 
-	"cloud.google.com/go/kms/apiv1/kmspb"
 	"github.com/hashicorp/go-hclog"
 	keymanagerv1 "github.com/spiffe/spire-plugin-sdk/proto/spire/plugin/server/keymanager/v1"
 	"golang.org/x/sync/errgroup"
@@ -202,24 +201,6 @@ func GetSPIREKeyIDFromCryptoKeyNameCipherTrust(cryptoKeyName string) (string, bo
 	}
 	spireKeyID := cryptoKeyName[spireKeyIDIndex:]
 	return spireKeyID, true
-}
-
-// keyTypeFromCryptoKeyVersionAlgorithm gets the KeyType that corresponds to the
-// given CryptoKeyVersion_CryptoKeyVersionAlgorithm.
-func keyTypeFromCryptoKeyVersionAlgorithm(algorithm kmspb.CryptoKeyVersion_CryptoKeyVersionAlgorithm) (keymanagerv1.KeyType, bool) {
-	switch algorithm {
-	//code definition in a structure that matches the same name and the same value
-	case kmspb.CryptoKeyVersion_EC_SIGN_P256_SHA256:
-		return keymanagerv1.KeyType_EC_P256, true
-	case kmspb.CryptoKeyVersion_EC_SIGN_P384_SHA384:
-		return keymanagerv1.KeyType_EC_P384, true
-	case kmspb.CryptoKeyVersion_RSA_SIGN_PKCS1_2048_SHA256:
-		return keymanagerv1.KeyType_RSA_2048, true
-	case kmspb.CryptoKeyVersion_RSA_SIGN_PKCS1_4096_SHA256:
-		return keymanagerv1.KeyType_RSA_4096, true
-	default:
-		return keymanagerv1.KeyType_UNSPECIFIED_KEY_TYPE, false
-	}
 }
 
 // keyTypeFromCryptoKeyVersionAlgorithm gets the KeyType that corresponds to the

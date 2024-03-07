@@ -1,8 +1,8 @@
 /*
  *  Copyright (c) 2024 Thales Group Limited. All Rights Reserved.
  *  This software is the confidential and proprietary information of Thales Group.
- *  
- *  Thales Group MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF 
+ *
+ *  Thales Group MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF
  *  THE SOFTWARE, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
  *  TO THE IMPLIED WARRANTIES OR MERCHANTABILITY, FITNESS FOR A
  *  PARTICULAR PURPOSE, OR NON-INFRINGEMENT. Thales Group SHALL NOT BE
@@ -24,8 +24,6 @@
 package ciphertrustkms
 
 import (
-	"net/url"
-	"strings"
 	"time"
 )
 
@@ -93,35 +91,4 @@ type PagingInfo struct {
 //	v := &5  // won't compile
 func IntPtr(v int) *int {
 	return &v
-}
-
-// Workaround for https://github.com/golang/go/issues/16947
-// We used to build up the url using sling's BaseURL() and Path() functions
-// which delegate to golangs URL.ResolveReference() function.  But this has
-// a bug which would cause escaped slashes in URL path components to become
-// unescaped, turning a single segment into two segments.
-// So we need to build our own absolute paths.
-// The golang issue is fixed in 1.8
-func abspath(components ...string) string {
-	// reusing the same slice here
-	noempties := components[:0]
-	terminatingSlash := false
-	for _, v := range components {
-		terminatingSlash = strings.HasSuffix(v, "/")
-		v = strings.TrimSpace(v)
-		v = strings.TrimPrefix(v, "/")
-		v = strings.TrimSuffix(v, "/")
-		if v != "" {
-			noempties = append(noempties, v)
-		}
-	}
-	p := "/" + strings.Join(noempties, "/")
-	if terminatingSlash {
-		p += "/"
-	}
-	return p
-}
-
-func pathSegmentEscape(s string) string {
-	return url.PathEscape(s)
 }

@@ -1,8 +1,8 @@
 /*
  *  Copyright (c) 2024 Thales Group Limited. All Rights Reserved.
  *  This software is the confidential and proprietary information of Thales Group.
- *  
- *  Thales Group MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF 
+ *
+ *  Thales Group MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF
  *  THE SOFTWARE, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
  *  TO THE IMPLIED WARRANTIES OR MERCHANTABILITY, FITNESS FOR A
  *  PARTICULAR PURPOSE, OR NON-INFRINGEMENT. Thales Group SHALL NOT BE
@@ -30,9 +30,6 @@ import (
 	"strconv"
 	"strings"
 	"time"
-
-	"golang.org/x/sync/errgroup"
-	"google.golang.org/grpc/status"
 )
 
 const (
@@ -91,10 +88,7 @@ func (k *CipherTrustCryptoKeysList) CreateKeyIterator() KeyIterator {
 }
 
 func (k *CipherTrustCryptoKeysListIterator) HasNext() bool {
-	if k.index < len(k.Keys) {
-		return true
-	}
-	return false
+	return k.index < len(k.Keys)
 }
 func (k *CipherTrustCryptoKeysListIterator) GetNext() (*Key, bool) {
 	if k.HasNext() {
@@ -124,42 +118,6 @@ func TokenGenerator() (*AccessToken, error) {
 	InputPayload := strings.NewReader("grant_type=password&username=" + USERNAME + "&password=" + PASSWORD)
 
 	return NetworkHelperForToken(METHODPOST, EndPoint, InputPayload, UrlEncodedContentType)
-}
-
-// Not used yet
-
-func (c *clientApi) deleteExistingKeys(ctx context.Context, keyId string) (bool, error) {
-	g, ctx := errgroup.WithContext(ctx)
-
-	KeyList, err := c.ListCryptoKeys(ctx, "")
-	if err != nil {
-		fmt.Println("Error geting the key to cleared")
-		return false, err
-	}
-
-	it := KeyList.CreateKeyIterator()
-	for {
-		key, ok := it.GetNext()
-		if !ok {
-			break
-		}
-		if strings.Contains(key.Name, keyId) {
-			// Trigger a goroutine to delete key
-			g.Go(func() error {
-				ok, err := DeleteKey(key.ID)
-				if err != nil || !ok {
-					return err
-				}
-				return nil
-			})
-		}
-	}
-	// Wait for all the detail gathering routines to finish.
-	if err := g.Wait(); err != nil {
-		statusErr := status.Convert(err)
-		return false, status.Errorf(statusErr.Code(), "failed to fetch entries: %v", statusErr.Message())
-	}
-	return true, nil
 }
 
 func DeleteKey(keyId string) (bool, error) {

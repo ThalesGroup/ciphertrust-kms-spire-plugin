@@ -1,8 +1,8 @@
 /*
  *  Copyright (c) 2024 Thales Group Limited. All Rights Reserved.
  *  This software is the confidential and proprietary information of Thales Group.
- *  
- *  Thales Group MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF 
+ *
+ *  Thales Group MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF
  *  THE SOFTWARE, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
  *  TO THE IMPLIED WARRANTIES OR MERCHANTABILITY, FITNESS FOR A
  *  PARTICULAR PURPOSE, OR NON-INFRINGEMENT. Thales Group SHALL NOT BE
@@ -614,8 +614,6 @@ func (p *Plugin) setDeactivated(ctx context.Context, cryptoKey *ciphertrustkms.K
 	log.Debug("CryptoKey updated as deactivated", ciphertrustkms.CryptoKeyNameTag, cryptoKey.Name)
 	p.notifyDisposeCryptoKeys(err)
 }
-
-func (p *Plugin) scheduleDestroyTask(ctx context.Context) {}
 
 // keepActiveCryptoKeysTask updates the CryptoKeys in the cache every 6 hours,
 // setting the spire-last-update label to the current (Unix) time.

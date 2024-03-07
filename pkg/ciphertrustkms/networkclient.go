@@ -1,8 +1,8 @@
 /*
  *  Copyright (c) 2024 Thales Group Limited. All Rights Reserved.
  *  This software is the confidential and proprietary information of Thales Group.
- *  
- *  Thales Group MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF 
+ *
+ *  Thales Group MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF
  *  THE SOFTWARE, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
  *  TO THE IMPLIED WARRANTIES OR MERCHANTABILITY, FITNESS FOR A
  *  PARTICULAR PURPOSE, OR NON-INFRINGEMENT. Thales Group SHALL NOT BE
@@ -30,7 +30,7 @@ import (
 	"crypto/tls"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"log"
 	"net/http"
 	"strings"
@@ -53,7 +53,7 @@ func sendMessage(client *http.Client, req *http.Request) ([]byte, error) {
 	}
 	defer res.Body.Close()
 
-	body, err := ioutil.ReadAll(res.Body)
+	body, err := io.ReadAll(res.Body)
 	if err != nil {
 		fmt.Println(err)
 		return nil, err
@@ -139,9 +139,9 @@ func NetworkHelperForCreateKeyVersion(method string, url string) (*CipherTrustCr
 
 	key := CipherTrustCryptoKey{}
 
-	parser := json.Unmarshal([]byte(body), &key.Key)
+	err = json.Unmarshal([]byte(body), &key.Key)
 	if err != nil {
-		log.Fatal(parser)
+		log.Fatal(err)
 	}
 
 	return &key, nil
@@ -178,9 +178,9 @@ func NetworkHelperForToken(method string, url string, payload *strings.Reader, c
 
 	Token := AccessToken{}
 
-	parser := json.Unmarshal([]byte(body), &Token)
+	err = json.Unmarshal([]byte(body), &Token)
 	if err != nil {
-		log.Fatal(parser)
+		log.Fatal(err)
 	}
 
 	return &Token, nil
@@ -222,9 +222,9 @@ func NetworkHelperForGetKey(method string, url string, accept string) (*CipherTr
 
 	key := CipherTrustCryptoKey{}
 
-	parser := json.Unmarshal([]byte(body), &key.Key)
+	err = json.Unmarshal([]byte(body), &key.Key)
 	if err != nil {
-		log.Fatal(parser)
+		log.Fatal(err)
 	}
 
 	return &key, nil
@@ -383,9 +383,9 @@ func NetworkHelperForListKeysByName(method string, url string, accept string) (*
 
 	ArrayKeysResponse := CipherTrustCryptoKeysList{}
 
-	parser := json.Unmarshal([]byte(body), &ArrayKeysResponse)
+	err = json.Unmarshal([]byte(body), &ArrayKeysResponse)
 	if err != nil {
-		log.Fatal(parser)
+		log.Fatal(err)
 	}
 
 	return &ArrayKeysResponse, nil
@@ -428,9 +428,9 @@ func NetworkHelperForSign(method string, url string, payload *bytes.Reader, cont
 
 	signatureResponse := SignResponse{}
 
-	parser := json.Unmarshal([]byte(body), &signatureResponse)
+	err = json.Unmarshal([]byte(body), &signatureResponse)
 	if err != nil {
-		log.Fatal(parser)
+		log.Fatal(err)
 	}
 
 	return &signatureResponse, nil
@@ -474,9 +474,9 @@ func NetworkHelperForVerify(method string, url string, payload *strings.Reader, 
 
 	verificationResponse := Verify{}
 
-	parser := json.Unmarshal([]byte(body), &verificationResponse)
+	err = json.Unmarshal([]byte(body), &verificationResponse)
 	if err != nil {
-		log.Fatal(parser)
+		log.Fatal(err)
 	}
 	verify := Verify{}
 
@@ -521,9 +521,9 @@ func NetworkHelperForUpdateKeys(method string, url string, payload *strings.Read
 
 	creatingKeyResponse := Key{}
 
-	parser := json.Unmarshal(body, &creatingKeyResponse)
+	err = json.Unmarshal(body, &creatingKeyResponse)
 	if err != nil {
-		log.Fatal(parser)
+		log.Fatal(err)
 	}
 
 	create := Key{}
@@ -570,9 +570,9 @@ func NetworkHelperForUpdateKeyLabel(method string, url string, payload *strings.
 	}
 	KeyResponse := Key{}
 
-	parser := json.Unmarshal(body, &KeyResponse)
+	err = json.Unmarshal(body, &KeyResponse)
 	if err != nil {
-		log.Fatal(parser)
+		log.Fatal(err)
 	}
 
 	return &KeyResponse, nil
