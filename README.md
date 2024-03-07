@@ -12,7 +12,9 @@ This repository contains an external Key Manager plugin using Thales CipherTrust
 - [Quick start](#quick-start)
 - [How it Works](#how-it-works)
 - [Building](#building)
+- [Testing](#testing)
 - [License](#license)
+- [Contributing](#contributing)
 - [Security Vulnerability Reporting](#security-vulnerability-reporting)
 
 ## Demo
