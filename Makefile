@@ -1,11 +1,19 @@
 ROOT_DIR := .
-SOURCES := $(wildcard pkg/ciphertrustkms/*.go) $(wildcard pkg/keymanager/*.go) cmd/server/keymanager_server.go
+SOURCE_MAIN := cmd/server/keymanager_server.go
+SOURCES := $(wildcard pkg/ciphertrustkms/*.go) $(wildcard pkg/keymanager/*.go) $(SOURCE_MAIN)
 TESTS := $(shell find . -name '*_test.go')
 GO_DIRS := $(shell find $(ROOT_DIR) -name '*.go' -exec dirname {} \; | sort -u)
 
+
+BIN_DIR := ./bin
+BIN_FILE:= $(BIN_DIR)/ciphertrust-kms-spire-plugin
+BIN_HASH_FILE := $(BIN_DIR)/ciphertrust-kms-spire-plugin.sha256
+
 build: fmt staticcheck vet goreportcard $(SOURCES)
 	@echo "Building..."
-	GOOS=linux GOARCH=amd64 go build -o bin/ciphertrust-kms-spire-plugin cmd/server/keymanager_server.go
+	GOOS=linux GOARCH=amd64 go build -o $(BIN_FILE) $(SOURCE_MAIN)
+	@echo "Generating binary hash in $(BIN_HASH_FILE)"
+	sha256sum $(BIN_FILE) > $(BIN_HASH_FILE)
 
 fmt:
 	@echo "Running gofmt..."
@@ -25,6 +33,7 @@ vet:
 		echo "-> $$dir..."; \
 		go vet $$dir/... || exit 1; \
 	done
+
 goreportcard:
-	@echo "Running goreportcard"
+	@echo "Running goreportcard..."
 	goreportcard-cli -v
