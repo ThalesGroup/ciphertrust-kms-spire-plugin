@@ -84,9 +84,9 @@ To build this plugin on Linux, run `make build`.
 The plugin binary will be placed in the `bin` folder
 
 **Important note**
-* `make build` will automatically parse the code to detect any anomally.
+* `make build` will automatically parse the code to detect any anomaly.
 * Prior runing the `make build`, install the [staticcheck](https://staticcheck.dev/docs/getting-started/), gofmt & go vet (go analysis tools) and the [goreportcard](https://github.com/gojp/goreportcard) tool.
-* if no annomally found, the binary and its hash will be generated in the `bin` folder.
+* if no anomaly found, the binary and its hash will be generated in the `bin` folder.
 
 ```bash
 gofmt...
@@ -116,12 +116,6 @@ ctmService        = "https://<local/remote IP/name>"
 username          = "user"
 pwd               = "pwd"
  ```
-
-
-
-
-
- 
 
 ## Contributing
 
