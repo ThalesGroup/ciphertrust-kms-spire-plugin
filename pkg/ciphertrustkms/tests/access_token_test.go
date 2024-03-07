@@ -30,15 +30,9 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-const (
-	ctmUrl      = "https://<local/remote IP/name>"
-	ctmUsername = "user"
-	ctmPassword = "pwd"
-)
-
 func TestRequestToken(t *testing.T) {
 
-	ciphertrustkms.Init(ctmUrl, ctmUsername, ctmPassword)
+	ciphertrustkms.Init(ctmService, username, pwd)
 	x, _ := ciphertrustkms.TokenGenerator()
 	assert.Contains(t, x.Jwt, "ey")
 }

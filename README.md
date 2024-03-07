@@ -83,10 +83,45 @@ The plugin uses CipherTrust Key Manager to bootstrap the SPIRE Server identity a
 To build this plugin on Linux, run `make build`.
 The plugin binary will be placed in the `bin` folder
 
+**Important note**
+* `make build` will automatically parse the code to detect any anomally.
+* Prior runing the `make build`, install the [staticcheck](https://staticcheck.dev/docs/getting-started/), gofmt & go vet (go analysis tools) and the [goreportcard](https://github.com/gojp/goreportcard) tool.
+* if no annomally found, the binary and its hash will be generated in the `bin` folder.
+
+```bash
+gofmt...
+Running staticcheck...
+Running go vet...
+Running goreportcard
+goreportcard-cli -v
+```
+
 ### Testing
 
 - Functional plugin testing is located in `tests/ciphertrust_spire_plugin_test.go`
 - Unit testing are located in `pkg/ciphertrustkms/tests`
+
+Prior to the functional testing make sure you have a valid CipherTrust Manager instance running and update the following variables from `tests/ciphertrust_spire_plugin_test.go`:
+
+```go
+ctmService        = "https://<local/remote IP/name>"
+username          = "user"
+pwd               = "pwd"
+ ```
+
+Prior to the unit testing make sure you have a valid CipherTrust Manager instance running and update the following variables from `pkg/ciphertrustkms/tests/cihpertrustkms_test.go`:
+
+```go
+ctmService        = "https://<local/remote IP/name>"
+username          = "user"
+pwd               = "pwd"
+ ```
+
+
+
+
+
+ 
 
 ## Contributing
 
