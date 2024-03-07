@@ -1,6 +1,10 @@
 # SPIRE Ciphertrust KMS Plugin
 
-This repository contains a key manager server plugin for [SPIRE](https://github.com/spiffe/spire) to delegate key management tasks to Thales CipherTrust KMS.
+This repository contains an external Key Manager plugin using Thales CipherTrust KMS for [SPIRE](https://github.com/spiffe/spire). 
+
+* Thales CipherTrust Manager is an independent 3rd party tool dedicated to efficiently managing keys on behalf of SPIRE.
+* It enables the initial enrollment of the SPIRE server architecture.
+* CipherTrust KMS provides the Root Key and the keys identifiers.
 
 ## Menu
 
