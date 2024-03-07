@@ -1,6 +1,6 @@
 module ciphertrust-kms-spire-plugin
 
-go 1.22.0
+go 1.22
 
 require (
 	github.com/andres-erbsen/clock v0.0.0-20160526145045-9e14626cd129
