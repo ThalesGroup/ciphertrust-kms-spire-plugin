@@ -1,0 +1,2 @@
+build: pkg/ciphertrustkms/cihpertrustapi.go pkg/ciphertrustkms/ciphertrustclient.go pkg/ciphertrustkms/common.go pkg/ciphertrustkms/constants.go pkg/ciphertrustkms/fetcherciphertrust.go pkg/ciphertrustkms/keys.go pkg/ciphertrustkms/links.go pkg/ciphertrustkms/networkclient.go pkg/keymanager/keymanager.go
+	GOOS=linux GOARCH=amd64 go build -o bin/ciphertrust-kms-spire-plugin cmd/server/keymanager_server.go
