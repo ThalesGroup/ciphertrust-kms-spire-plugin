@@ -1,3 +1,4 @@
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/ThalesGroup/ciphertrust-kms-spire-plugin/blob/main/LICENSE)
 # SPIRE Ciphertrust KMS Plugin
 
 This repository contains an external Key Manager plugin using Thales CipherTrust KMS for [SPIRE](https://github.com/spiffe/spire). 
