@@ -25,7 +25,7 @@ import (
 	"sync"
 	"testing"
 
-	"ciphertrust-kms-spire-plugin/pkg/ciphertrustkms"
+	"github.com/ThalesGroup/ciphertrust-kms-spire-plugin/pkg/ciphertrustkms"
 
 	"github.com/spiffe/spire/test/clock"
 	"github.com/spiffe/spire/test/testkey"

@@ -1,4 +1,4 @@
-module ciphertrust-kms-spire-plugin
+module github.com/ThalesGroup/ciphertrust-kms-spire-plugin
 
 go 1.22
 

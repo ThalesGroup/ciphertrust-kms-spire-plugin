@@ -17,7 +17,6 @@
 package keymanager
 
 import (
-	"ciphertrust-kms-spire-plugin/pkg/ciphertrustkms"
 	"context"
 	"crypto/sha1"
 	"crypto/sha256"
@@ -28,6 +27,8 @@ import (
 	"os"
 	"strconv"
 	"strings"
+
+	"github.com/ThalesGroup/ciphertrust-kms-spire-plugin/pkg/ciphertrustkms"
 
 	"sync"
 

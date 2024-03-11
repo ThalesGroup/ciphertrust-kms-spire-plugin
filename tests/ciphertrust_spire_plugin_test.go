@@ -17,11 +17,12 @@
 package keymanager_test
 
 import (
-	keymanagerctm "ciphertrust-kms-spire-plugin/pkg/keymanager"
 	"context"
 	"crypto/sha256"
 	"testing"
 	"time"
+
+	keymanagerctm "github.com/ThalesGroup/ciphertrust-kms-spire-plugin/pkg/keymanager"
 
 	"github.com/spiffe/spire-plugin-sdk/pluginsdk"
 	"github.com/spiffe/spire-plugin-sdk/plugintest"

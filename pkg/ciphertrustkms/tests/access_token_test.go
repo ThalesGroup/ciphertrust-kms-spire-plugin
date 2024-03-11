@@ -17,8 +17,9 @@
 package ciphertrustkms_test
 
 import (
-	ciphertrustkms "ciphertrust-kms-spire-plugin/pkg/ciphertrustkms"
 	"testing"
+
+	ciphertrustkms "github.com/ThalesGroup/ciphertrust-kms-spire-plugin/pkg/ciphertrustkms"
 
 	"github.com/stretchr/testify/assert"
 )

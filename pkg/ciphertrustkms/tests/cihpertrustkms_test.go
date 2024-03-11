@@ -35,8 +35,8 @@ import (
 	keymanagerv1 "github.com/spiffe/spire-plugin-sdk/proto/spire/plugin/server/keymanager/v1"
 	configv1 "github.com/spiffe/spire-plugin-sdk/proto/spire/service/common/config/v1"
 
-	"ciphertrust-kms-spire-plugin/pkg/ciphertrustkms"
-	keymanagerctm "ciphertrust-kms-spire-plugin/pkg/keymanager"
+	"github.com/ThalesGroup/ciphertrust-kms-spire-plugin/pkg/ciphertrustkms"
+	keymanagerctm "github.com/ThalesGroup/ciphertrust-kms-spire-plugin/pkg/keymanager"
 
 	"github.com/spiffe/spire/test/clock"
 	"github.com/spiffe/spire/test/spiretest"

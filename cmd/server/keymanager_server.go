@@ -17,7 +17,7 @@
 package main
 
 import (
-	keymanager_server "ciphertrust-kms-spire-plugin/pkg/keymanager"
+	keymanager_server "github.com/ThalesGroup/ciphertrust-kms-spire-plugin/pkg/keymanager"
 
 	"github.com/spiffe/spire-plugin-sdk/pluginmain"
 	keymanagerv1 "github.com/spiffe/spire-plugin-sdk/proto/spire/plugin/server/keymanager/v1"
