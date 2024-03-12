@@ -1,3 +1,4 @@
+[![Go Report Card](https://goreportcard.com/badge/github.com/ThalesGroup/ciphertrust-kms-spire-plugin)](https://goreportcard.com/report/github.com/ThalesGroup/ciphertrust-kms-spire-plugin)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/ThalesGroup/ciphertrust-kms-spire-plugin/blob/main/LICENSE)
 # SPIRE Ciphertrust KMS Plugin
 
