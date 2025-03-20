@@ -11,7 +11,7 @@ require (
 	github.com/spiffe/spire v1.9.0
 	github.com/spiffe/spire-plugin-sdk v1.9.0
 	github.com/stretchr/testify v1.8.4
-	golang.org/x/sync v0.6.0
+	golang.org/x/sync v0.10.0
 	google.golang.org/api v0.162.0
 	google.golang.org/grpc v1.62.0
 )
@@ -24,8 +24,8 @@ require (
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
 	github.com/rogpeppe/go-internal v1.10.0 // indirect
 	github.com/spiffe/go-spiffe/v2 v2.1.7 // indirect
-	golang.org/x/mod v0.16.0 // indirect
-	golang.org/x/tools v0.19.0 // indirect
+	golang.org/x/mod v0.17.0 // indirect
+	golang.org/x/tools v0.21.1-0.20240508182429-e35e4ccd0d2d // indirect
 	google.golang.org/genproto v0.0.0-20240125205218-1f4bbc51befe // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20240205150955-31a09d347014 // indirect
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
@@ -46,11 +46,11 @@ require (
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/mitchellh/go-testing-interface v1.14.1 // indirect
 	github.com/oklog/run v1.1.0 // indirect
-	golang.org/x/crypto v0.21.0 // indirect
-	golang.org/x/net v0.23.0 // indirect
+	golang.org/x/crypto v0.31.0 // indirect
+	golang.org/x/net v0.25.0 // indirect
 	golang.org/x/oauth2 v0.16.0 // indirect
-	golang.org/x/sys v0.18.0 // indirect
-	golang.org/x/text v0.14.0 // indirect
+	golang.org/x/sys v0.28.0 // indirect
+	golang.org/x/text v0.21.0 // indirect
 	google.golang.org/appengine v1.6.8 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240125205218-1f4bbc51befe // indirect
 	google.golang.org/protobuf v1.33.0 // indirect
