@@ -1,6 +1,6 @@
 module github.com/ThalesGroup/ciphertrust-kms-spire-plugin
 
-go 1.22
+go 1.23.0
 
 require (
 	github.com/andres-erbsen/clock v0.0.0-20160526145045-9e14626cd129
@@ -11,7 +11,7 @@ require (
 	github.com/spiffe/spire v1.9.0
 	github.com/spiffe/spire-plugin-sdk v1.9.0
 	github.com/stretchr/testify v1.8.4
-	golang.org/x/sync v0.10.0
+	golang.org/x/sync v0.12.0
 	google.golang.org/api v0.162.0
 	google.golang.org/grpc v1.62.0
 )
@@ -33,8 +33,7 @@ require (
 )
 
 require (
-	cloud.google.com/go/compute v1.23.3 // indirect
-	cloud.google.com/go/compute/metadata v0.2.3 // indirect
+	cloud.google.com/go/compute/metadata v0.3.0 // indirect
 	cloud.google.com/go/kms v1.15.7
 	github.com/fatih/color v1.15.0 // indirect
 	github.com/golang/protobuf v1.5.3
@@ -46,12 +45,11 @@ require (
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/mitchellh/go-testing-interface v1.14.1 // indirect
 	github.com/oklog/run v1.1.0 // indirect
-	golang.org/x/crypto v0.31.0 // indirect
-	golang.org/x/net v0.25.0 // indirect
-	golang.org/x/oauth2 v0.16.0 // indirect
-	golang.org/x/sys v0.28.0 // indirect
-	golang.org/x/text v0.21.0 // indirect
-	google.golang.org/appengine v1.6.8 // indirect
+	golang.org/x/crypto v0.36.0 // indirect
+	golang.org/x/net v0.38.0 // indirect
+	golang.org/x/oauth2 v0.27.0 // indirect
+	golang.org/x/sys v0.31.0 // indirect
+	golang.org/x/text v0.23.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240125205218-1f4bbc51befe // indirect
 	google.golang.org/protobuf v1.33.0 // indirect
 )
